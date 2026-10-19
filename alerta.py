@@ -3,11 +3,11 @@ import requests
 import json
 
 
-# Reemplaza esto con la URL de tu Webhook de Discord
+# aqui abajo colocamos la url del webhook de discord que creamos en el servidor de discord
+WEBHOOK_URL = "url de prueba"
 
 
 def enviar_alerta_seguridad(mensaje, contador: int):
-    # Estructura del mensaje tipo Embed (tarjeta de alerta)
     payload = {"content": "Prueba de webhook"}
 
     if (mensaje == "Nada que reportar." or mensaje == ""):
@@ -18,7 +18,7 @@ def enviar_alerta_seguridad(mensaje, contador: int):
                 {
                     "title": "✅ Estado de Seguridad",
                     "description": "No se detectaron alertas de seguridad.",
-                    "color": 3066993,  # Color verde (Decimal)
+                    "color": 3066993, 
                     "fields": [
                         {
                             "name": "Estado",
@@ -43,7 +43,7 @@ def enviar_alerta_seguridad(mensaje, contador: int):
                 {
                     "title": "🚨 ALERTA DE SEGURIDAD DETECTADA",
                     "description": mensaje,
-                    "color": 15158332,  # Color rojo (Decimal)
+                    "color": 15158332,
                     "fields": [
                         {
                             "name": "Estado",
@@ -78,7 +78,7 @@ def iniciar_monitoreo():
     print("Iniciando envío periódico de alertas de seguridad...")
     while True:
         enviar_alerta_seguridad()
-        time.sleep(5)  # Espera 5 segundos entre cada alerta
+        time.sleep(5)
 
 
 if __name__ == "__main__":
